@@ -18,7 +18,8 @@ $(document).ready(function() {
 		return value.toString();
 	}
 
-	//what does this do?
+	// creates object within array deck and assigns 13 cards to each suit. 
+	//Then assigns numbers 1-13 to each suit above
 	var deck = [];
 	var suits = ['hearts', 'diamonds', 'spades', 'clubs'];
 	for (var i = 0; i<suits.length; i++) {
@@ -30,8 +31,8 @@ $(document).ready(function() {
 	
 	//what does this do?
 	var shuffle = function(array) { 
-		var copy = [];
-		var n = array.length; 
+		var copy = []; //creates empty array copy[] 
+		var n = array.length; // n is the value of the length of the argument passed in. (in this case, the argument will be deck)
 		var i; 
 		while (n) { i = Math.floor(Math.random() * array.length);  
 			if (i in array) { 
@@ -44,17 +45,31 @@ $(document).ready(function() {
 	}
 	
 	//Now call the shuffle function and save the result of what shuffle returns into your deck variable
-	
+	deck = shuffle(deck);
+
 	var cards_player_1 = [];
 	var cards_player_2 = [];
 	// write a function called deal that will evently divide the deck up between the two players
-	
+	var deal = function (deck) {
+		for (var 9 = 0; i < deck.length; i++) {
+			if (i % 2 === 0) {
+				cards_player_1.push(deck[i]);
+			} else {
+                cards_player_2.push(deck[i]);
+			};
+		};
+	};
 	
 	//create a function (algorithm) called "war" that takes two cards as parameters, compares them and returns a winner. A tie should return false.
-	var war = function(){
+	var war = function(card1, card2){
+		if (card1 > card2) {
+			return card1;
+		} else if (card2 > card1) {
+			return card2;
+		} else {
+			return false;
+		};
 	
-		
-	}
 	
 	var advance = function(){
 		//take the top two cards and display them
